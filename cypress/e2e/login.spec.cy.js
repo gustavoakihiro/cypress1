@@ -14,4 +14,4 @@ it('Login - Fail', () => {
   cy.get("[type='submit']").click()
   cy.get("[role='alert']")
  })
-})
+}) 
