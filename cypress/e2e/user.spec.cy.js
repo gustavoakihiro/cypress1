@@ -1,3 +1,4 @@
+import { select } from 'async'
 import userData from '../fixtures/user-data.json'
 
 describe('Orange HRM Tests', () => {
@@ -17,7 +18,7 @@ describe('Orange HRM Tests', () => {
     dateField: "[placeholder='yyyy-dd-mm']",
     dateCloseButton: ".--close",
     submitButton: "[type='submit']",
-     
+    genericDropDown: ".oxd-select-text-input"
   }
   it('Login - Fail', () => {
     cy.visit('/auth/login')
@@ -38,12 +39,16 @@ describe('Orange HRM Tests', () => {
     cy.get(selectorsList.middleNameField).clear().type('Akihiro')
     cy.get(selectorsList.lastNameField).clear().type('Matsuoka')
     cy.get(selectorsList.genericField).eq(4).clear().type('EmpTest')
-    cy.get(selectorsList.genericField).eq(5).clear().type('IdTest')
+    cy.get(selectorsList.genericField).eq(5).clear().type('IdTest') 
     cy.get(selectorsList.genericField).eq(6).clear().type('CNH')
     cy.get(selectorsList.dateField).eq(0).clear().type('2025-13-01')
     cy.get(selectorsList.dateCloseButton).click()
     cy.get(selectorsList.dateField).eq(1).clear().type('1996-20-06')
     cy.get(selectorsList.dateCloseButton).click()
+    cy.get(selectorsList.genericDropDown).eq(0).click()
+    cy.get(':nth-child(4) > span').click()
+    cy.get(selectorsList.genericDropDown).eq(1).click()
+    cy.get(':nth-child(4) > span').click() 
     cy.get(selectorsList.submitButton).eq(0).click()
     cy.get('body').should('contain', 'Successfully Updated')
   })
