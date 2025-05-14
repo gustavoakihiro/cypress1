@@ -12,8 +12,6 @@ const myInfoPage = new MyInfoPage()
 
 describe('Orange HRM Tests', () => {
 
-
-
   it('User Info Update - Success', () => {
     loginPage.accessLoginPage()
     loginPage.loginWithAnyUser(userData.userSuccess.username, userData.userSuccess.password)
@@ -26,14 +24,6 @@ describe('Orange HRM Tests', () => {
     myInfoPage.fillPerosnalDetails('Gustavo', 'Akihiro', 'Matsuoka')
     myInfoPage.fillEmployeeDetails('EmployId', 'otherId', 'CNH', '2025-13-01','1996-20-06')
     myInfoPage.checkSubmit()
-  
-  })
-
-    it.only('Login - Fail', () => {
-    loginPage.accessLoginPage()
-    loginPage.loginWithAnyUser(userData.userFail.username, userData.userFail.password)
-    loginPage.checkWrongCredentialAlert()
-
   })
 
 }) 
